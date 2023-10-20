@@ -2493,11 +2493,11 @@ strip:
 
 install:
 	install -p -m 644 $(MODULE_NAME).ko  $(MODDESTDIR)
-	/sbin/depmod -a ${KVER}
+	/sbin/depmod -a 6.4.16-v8+
 
 uninstall:
 	rm -f $(MODDESTDIR)$(MODULE_NAME).ko
-	/sbin/depmod -a ${KVER}
+	/sbin/depmod -a 6.4.16-v8+
 
 sign:
 	@openssl req -new -x509 -newkey rsa:2048 -keyout MOK.priv -outform DER -out MOK.der -nodes -days 36500 -subj "/CN=Custom MOK/"
@@ -2520,7 +2520,7 @@ ifneq (,$(wildcard $(MODDESTDIR)rtl*))
 	@tar cPf $(MODDESTDIR)../backup_rtlwifi_driver.tar $(wildcard $(MODDESTDIR)rtl*)
 	@rm -fr $(wildcard $(MODDESTDIR)rtl*)
 endif
-	@/sbin/depmod -a ${KVER}
+	@/sbin/depmod -a 6.4.16-v8+
 	@echo "Please reboot your system"
 
 restore_rtlwifi:
@@ -2537,7 +2537,7 @@ ifneq (,$(wildcard $(MODDESTDIR)../backup_rtlwifi_driver.tar))
 	@tar xPf $(MODDESTDIR)../backup_rtlwifi_driver.tar
 	@rm $(MODDESTDIR)../backup_rtlwifi_driver.tar
 endif
-	@/sbin/depmod -a ${KVER}
+	@/sbin/depmod -a 6.4.16-v8+ 
 	@echo "Please reboot your system"
 
 config_r:
