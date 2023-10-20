@@ -1352,16 +1352,16 @@ ifeq ($(CONFIG_PLATFORM_AUTODETECT), y)
 EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN
 EXTRA_CFLAGS += -DCONFIG_IOCTL_CFG80211 -DRTW_USE_CFG80211_STA_EVENT
 
-#SUBARCH := $(shell uname -m)
-SUBARCH := $(shell uname -m | sed -e "s/i.86/i386/; s/ppc/powerpc/; s/armv.l/arm/; s/aarch64/arm64/; s/riscv.*/riscv/;")
+#SUBARCH := 6.4.16-v8+
+SUBARCH := 6.4.16-v8+ | sed -e "s/i.86/i386/; s/ppc/powerpc/; s/armv.l/arm/; s/aarch64/arm64/; s/riscv.*/riscv/;")
 ARCH ?= $(SUBARCH)
 
 CROSS_COMPILE ?=
-KVER ?= $(shell uname -r)
-KSRC := /lib/modules/$(KVER)/build
-MODDESTDIR := /lib/modules/$(KVER)/kernel/drivers/net/wireless/
+KVER ?= 6.4.16-v8+
+KSRC := /lib/modules/6.4.16-v8+/build
+MODDESTDIR := /lib/modules/6.4.16-v8+/kernel/drivers/net/wireless/
 INSTALL_PREFIX :=
-STAGINGMODDIR := /lib/modules/$(KVER)/kernel/drivers/staging
+STAGINGMODDIR := /lib/modules/6.4.16-v8+/kernel/drivers/staging
 
 # Platform Specific Flags may be Needed in some Situations
 #EXTRA_CFLAGS += -DCONFIG_PLATFORM_ANDROID
@@ -1373,14 +1373,14 @@ ifeq ($(CONFIG_PLATFORM_I386_PC), y)
 EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN
 EXTRA_CFLAGS += -DCONFIG_IOCTL_CFG80211 -DRTW_USE_CFG80211_STA_EVENT
 
-SUBARCH := $(shell uname -m | sed -e s/i.86/i386/)
+SUBARCH := 6.4.16-v8+ | sed -e s/i.86/i386/)
 ARCH ?= $(SUBARCH)
 CROSS_COMPILE ?=
-KVER := $(shell uname -r)
-KSRC := /lib/modules/$(KVER)/build
-MODDESTDIR := /lib/modules/$(KVER)/kernel/drivers/net/wireless/
+KVER := 6.4.16-v8+
+KSRC := /lib/modules/6.4.16-v8+/build
+MODDESTDIR := /lib/modules/6.4.16-v8+/kernel/drivers/net/wireless/
 INSTALL_PREFIX :=
-STAGINGMODDIR := /lib/modules/$(KVER)/kernel/drivers/staging
+STAGINGMODDIR := /lib/modules/6.4.16-v8+/kernel/drivers/staging
 endif
 
 ifeq ($(CONFIG_PLATFORM_NV_TK1), y)
@@ -1409,9 +1409,9 @@ EXTRA_CFLAGS += -DCONFIG_IOCTL_CFG80211 -DRTW_USE_CFG80211_STA_EVENT
 ARCH ?= arm
 
 CROSS_COMPILE ?=
-KVER := $(shell uname -r)
-KSRC := /lib/modules/$(KVER)/build
-MODDESTDIR := /lib/modules/$(KVER)/kernel/drivers/net/wireless/
+KVER := 6.4.16-v8+
+KSRC := /lib/modules/6.4.16-v8+/build
+MODDESTDIR := /lib/modules/6.4.16-v8+/kernel/drivers/net/wireless/
 INSTALL_PREFIX :=
 endif
 
